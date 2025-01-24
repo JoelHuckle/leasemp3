@@ -16,9 +16,12 @@
     "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.7.9",
     "common": "^0.2.5",
+    "cookies-next": "^5.1.0",
+    "mongodb": "^5.9.2",
     "mongoose": "^8.9.5",
     "next": "^15.1.5",
     "passport": "^0.7.0",
+    "passport-google-oauth2": "^0.2.0",
     "passport-google-oauth20": "^2.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

@@ -1,6 +1,15 @@
 import Image from "next/image";
+import { getCookie } from "cookies-next";
+import connect from "@/lib/database";
 
-export default function Home() {
+export default async function Home({ req, res }) {
+  try {
+    const cookieExists = getCookie("token", { req, res });
+    if (cookieExists) return { redirect: { destination: "/dashboard" } };
+  } catch (err) {
+    return { props: {} };
+  }
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="text-center">
@@ -9,7 +18,9 @@ export default function Home() {
         </section>
 
         <section>
-          <p>google sign in</p>
+          <a href="/api/google" className="text-blue-500">
+            Login with google
+          </a>
         </section>
 
         <section>
@@ -19,3 +30,12 @@ export default function Home() {
     </div>
   );
 }
+
+// export async function getServerSideProps({ req, res }) {
+//   try {
+//     const cookieExists = getCookie("token", { req, res });
+//     if (cookeiExists) return { redirect: { destination: "/dashboard" } };
+//   } catch (err) {
+//     return { props: {} };
+//   }
+// }
